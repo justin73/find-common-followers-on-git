@@ -19,10 +19,17 @@ import { useUserFollowers } from '../../queries/getFollowers/getFollowers.querie
 
 const UserFollowersTable = ({ username }) => {
   const prevUsernameRef = useRef();
-  const { isLoading, followerList, isFetching, hasNextPage, fetchNextPage } =
-    useUserFollowers({
-      username
-    });
+  const {
+    isLoading,
+    followerList,
+    isFetching,
+    hasNextPage,
+    fetchNextPage,
+    isError,
+    isSuccess
+  } = useUserFollowers({
+    username
+  });
 
   const tableEl = useRef();
   const [distanceBottom, setDistanceBottom] = useState(0);
@@ -68,6 +75,20 @@ const UserFollowersTable = ({ username }) => {
     };
   }, [scrollListener]);
 
+  const loadingEl = (
+    <TableRow>
+      <TableCell>
+        <CircularProgress />
+      </TableCell>
+    </TableRow>
+  );
+
+  const errorEl = (
+    <TableRow>
+      <TableCell>Someting went wrong</TableCell>
+    </TableRow>
+  );
+
   return (
     <TableContainer
       style={{ maxWidth: '300px', margin: 'auto', maxHeight: '300px' }}
@@ -76,17 +97,15 @@ const UserFollowersTable = ({ username }) => {
       <Table stickyHeader aria-label="user follower table">
         <TableHead>
           <TableRow>
-            <TableCell align="center"> {username} followers</TableCell>
+            <TableCell align="center">{`${isLoading ? 'Loading' : 'Loaded'} ${
+              followerList.length
+            } of ${username}'s followers`}</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {isLoading ? (
-            <TableRow>
-              <TableCell>
-                <CircularProgress />
-              </TableCell>
-            </TableRow>
-          ) : (
+          {isLoading && loadingEl}
+          {isError && errorEl}
+          {isSuccess && (
             <>
               {followerList?.map(follower => (
                 <TableRow key={follower.id}>
