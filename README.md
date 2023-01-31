@@ -17,6 +17,13 @@ Example
    }
 ```
 
+DEV NOTE: Due to time limit, the current status only includes the happy path and some mininal UI elements, there is no time left to polish the UI as well as adding unit tests. 
+
+List of things to continue
+- [ ] Polish UI
+- [ ] Add unit tests
+- [ ] Better error handling mechanism
+
 ## Preivew
 
 ### Normal state
