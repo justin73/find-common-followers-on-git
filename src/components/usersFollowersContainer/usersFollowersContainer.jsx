@@ -2,6 +2,7 @@ import { Box, Button, Divider } from '@mui/material';
 import { useContext, useCallback, useState } from 'react';
 
 import UsernamesContext from '../../contexts/usernamesContext';
+import CommonUserList from '../commonUserList/commonUserList';
 import UserFollowersTable from '../userFollowerTable/userFollowerTable';
 
 const UsersFollowersContainer = () => {
@@ -49,6 +50,8 @@ const UsersFollowersContainer = () => {
         >
           {`${isCommonUserListVisible ? 'Hide' : 'Display'} Common Followers`}
         </Button>
+
+        {isCommonUserListVisible && <CommonUserList />}
       </Box>
     </>
   );

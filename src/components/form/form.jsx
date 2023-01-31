@@ -10,6 +10,7 @@ const QueryForm = () => {
     control,
     getValues,
     setError,
+    clearErrors,
     formState: { errors }
   } = useForm();
 
@@ -58,9 +59,9 @@ const QueryForm = () => {
                     message:
                       'the second user cannot be the same as the first user, please choose another name'
                   });
+                } else {
+                  clearErrors('duplicate');
                 }
-
-                return true;
               }
             }}
           />

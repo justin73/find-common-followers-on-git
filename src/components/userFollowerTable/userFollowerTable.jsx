@@ -97,9 +97,9 @@ const UserFollowersTable = ({ username }) => {
       <Table stickyHeader aria-label="user follower table">
         <TableHead>
           <TableRow>
-            <TableCell align="center">{`${isLoading ? 'Loading' : 'Loaded'} ${
-              followerList.length
-            } of ${username}'s followers`}</TableCell>
+            <TableCell align="center">{`${
+              isLoading ? 'Loading' : `Loaded ${followerList.length}`
+            }  of ${username}'s followers`}</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

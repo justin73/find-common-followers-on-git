@@ -1,61 +1,43 @@
-<h1 align="center">
-  Vite Template React
-</h1>
+# Find common followers on Git
 
-<p align="center">
-  <a href="https://github.com/SafdarJamal/vite-template-react/releases">
-    <img src="https://img.shields.io/github/v/release/SafdarJamal/vite-template-react" alt="GitHub Release (latest by date)" />
-  </a>
-  <a href="https://github.com/SafdarJamal/vite-template-react/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/SafdarJamal/vite-template-react" alt="License" />
-  </a>
-</p>
+a simple web app which accepts two GitHub usernames and displays a list of their common followers (ie, the people who follow both users)
 
-<p align="center">
-    A <a href="https://vitejs.dev">Vite</a> + <a href="https://reactjs.org">React</a> starter template.
-</p>
+Context: the GitHub user follower API has pagination feature so that means we cannot get all the followers on one try. so for all the user follower tables, I've enabled the infinite scroll and the common follower table once activated will automatically update as your scroll the user followers tables
 
-![Vite Template React](https://user-images.githubusercontent.com/48409548/130238925-9ffa2704-7e42-4d85-876d-44fefb6a1548.png)
+NOTE: if your requests get errored out and with the error of running out of limits or bad credentials, please generate your own github token and add it in axios to the `getFollowers.api.js` file as part of the "headers"
 
-## Folder Structure
-
-No configuration or complicated folder structures, just the files you need to build your app:
+Example
 
 ```
-vite-template-react
-├── node_modules
-├── public
-│   ├── favicon.svg
-│   └── robots.txt
-└── src
-    ├── App.css
-    ├── App.jsx
-    ├── index.css
-    ├── index.jsx
-    └── logo.svg
-├── .gitignore
-├── index.html
-├── package.json
-├── README.md
-├── vite.config.js
+   {
+     headers: {
+       // here to paste your own github token
+       Authorization: `token {YOUR_PERSONAL_TOKEN}`
+     }
+   }
 ```
 
-## Development
+## Preivew
 
-To get a local copy of the code, clone it using git:
+### Normal state
 
-```
-git clone https://github.com/SafdarJamal/vite-template-react.git
-cd vite-template-react
-```
+![Screenshot 2023-01-30 at 10 18 28 PM](https://user-images.githubusercontent.com/3356603/215654425-a2c581cc-84fa-48c8-be5e-0b3ecae373bc.png)
 
-Make it your own:
+### Form validation
 
-```
-rm -rf .git && git init && npm init
-git add .
-git commit -m "Initial commit"
-```
+#### Required field
+
+![Screenshot 2023-01-30 at 10 14 43 PM](https://user-images.githubusercontent.com/3356603/215653934-15bbef45-3ed6-48d2-902b-d41a75150551.png)
+
+#### Forbid two idential usernames
+
+![Screenshot 2023-01-30 at 10 14 34 PM](https://user-images.githubusercontent.com/3356603/215653936-d14ae222-7b26-42b4-9212-04dde3832029.png)
+
+#### Error Handling
+
+![Screenshot 2023-01-30 at 10 02 15 PM](https://user-images.githubusercontent.com/3356603/215653750-7b0aa595-0c1c-48f6-9114-7238e48cafb1.png)
+
+## Run it locally
 
 Install dependencies:
 
@@ -66,10 +48,10 @@ npm i
 Now, you can start a local web server by running:
 
 ```
-npm start
+npm run dev
 ```
 
-And then open http://localhost:3000 to view it in the browser.
+And then open <http://localhost:3000> to view it in the browser.
 
 #### Available Scripts
 
@@ -84,7 +66,3 @@ In this project, you can run the following scripts:
 ## Credits
 
 Vite Template React is built and maintained by [Safdar Jamal](https://safdarjamal.github.io).
-
-## License
-
-This project is licensed under the terms of the [MIT license](https://github.com/SafdarJamal/vite-template-react/blob/main/LICENSE).
