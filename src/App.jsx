@@ -1,6 +1,7 @@
-import { Box } from '@mui/material';
+import { Box, Divider } from '@mui/material';
 
 import QueryForm from './components/form/form';
+import UsersFollowersContainer from './components/usersFollowersContainer/usersFollowersContainer';
 import { UsernamesProvider } from './contexts/usernamesContext';
 
 import './index.css';
@@ -16,6 +17,8 @@ function App() {
 
       <UsernamesProvider>
         <QueryForm />
+        <Divider />
+        <UsersFollowersContainer />
       </UsernamesProvider>
     </Box>
   );
